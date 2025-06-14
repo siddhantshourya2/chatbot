@@ -3,11 +3,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 import os
 
-# tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
-# model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-medium")
-
-tokenizer = AutoTokenizer.from_pretrained("fine_tuning/fine_tuned_model")
-model = AutoModelForCausalLM.from_pretrained("fine_tuning/fine_tuned_model")
+token = os.environ.get("HF_TOKEN")
+tokenizer = AutoTokenizer.from_pretrained("siddhant8789/chatbot-finetuned-model", token=token)
+model = AutoModelForCausalLM.from_pretrained("siddhant8789/chatbot-finetuned-model", token=token)
 
 app = Flask(__name__)
 
